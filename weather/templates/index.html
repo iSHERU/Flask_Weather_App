@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Weather App</h1>
+
+      
+      <div id="map" style="height: 400px;"></div>
+      <script>
+        // Initialize and add the map
+        function initMap() {
+          const map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 3
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+
+    </div>
+  </div>
+</div>
