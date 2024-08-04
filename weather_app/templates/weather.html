@@ -6,18 +6,23 @@
     {% if name %}
         <h1>Weather of {{ name }}</h1>
 
+        <p>Sky: {{ data.main }}</p> <br>
+        <p>Min Temperature: {{ data.temp_min }}</p> <br>
+        <p>Max Temperature: {{ data.temp_max }}</p> <br>
+
+        <br><br>
         <a class="btn btn-secondary" href="{{ url_for('views.weather') }}" role="button">Check Weather Again</a>
 
     {% else %}
-
-        <h1>Enter City Name</h1>
-
         <form method="POST">
             {{ form.hidden_tag() }}
-            {{ form.name.label }}
-            {{ form.name(size=20) }}
-            
-            {{ form.submit }}
+            {{ form.name.label(class="form.label") }}
+            {{ form.name(size=20, class="form-control") }}
+            <br><br>
+            {{ form.country_name.label(class="form.label") }}
+            {{ form.country_name(size=20, class="form-control") }}
+            <br><br>
+            {{ form.submit(class="btn btn-dark") }}
         </form>
     {% endif %}
 {% endblock %}

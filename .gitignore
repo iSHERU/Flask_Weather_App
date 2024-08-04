@@ -3,3 +3,5 @@ weather/__pycache__/
 .git/
 venv/
 instance/
+creds.json
+
