@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h1>Weather App</h1>
+      <h1>Weather App</h1> 
 
       
       <div id="map" style="height: 400px;"></div>
@@ -20,6 +20,9 @@
         }
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+
+      <br><br><br><br>
+      <a class="btn btn-secondary" href="{{ url_for('views.weather') }}" role="button">Check Weather</a>
 
     </div>
   </div>

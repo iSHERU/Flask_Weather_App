@@ -1,7 +1,13 @@
 from flask import Blueprint, render_template, request, redirect, url_for
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 views = Blueprint('views', __name__)
 
+class city_name(FlaskForm):
+  name = StringField('City Name: ', validators=[DataRequired()])
+  submit = SubmitField('Submit')
 
 @views.route('/')
 def home():
@@ -10,13 +16,16 @@ def home():
 
 @views.route('/weather', methods=["POST", "GET"])
 def weather():
+  name = None
+  form = city_name()
+
   if request.method == "POST":
-    city = request.form.get("city")
-    weather_data = check_weather(city)
+    if form.validate_on_submit():
+      name = form.name.data
+      form.name.data = ''
 
-    return render_template('weather.html', weather_data=weather_data)
-  return render_template('weather.html')
-
+      return render_template("weather.html", name=name, form=form)
+  return render_template("weather.html", form=form)
 
 def check_weather(city):
   # TODO: Implement this function

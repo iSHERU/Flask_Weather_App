@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Your Weather{% endblock %}
+
+{% block content %}
+    {% if name %}
+        <h1>Weather of {{ name }}</h1>
+
+        <a class="btn btn-secondary" href="{{ url_for('views.weather') }}" role="button">Check Weather Again</a>
+
+    {% else %}
+
+        <h1>Enter City Name</h1>
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}
+            {{ form.name(size=20) }}
+            
+            {{ form.submit }}
+        </form>
+    {% endif %}
+{% endblock %}
